@@ -1,0 +1,39 @@
+<header>
+  <h1 appTextHighlighter class="logo">Welcome TO PERX </h1>
+  <h3>Text Shadow by Angular Directive</h3>
+</header>
+<nav>
+  <ul>
+    <li> <a routerLinkActive="active" routerLink="/">Home</a></li>
+    <li> <a routerLinkActive="active" routerLink="/asdf">404</a></li>
+  </ul>
+</nav>
+<div class="container text-center">
+  <div id="filter">
+    <select (change)="onFilterByType($event)">
+      <option value="">Filter By Type</option>
+      <ng-container *ngFor="let data of bookType">
+        <option value="{{data}}">{{data}}</option>
+      </ng-container>
+    </select>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="sortIcon" (click)="sortObject('id')">ID <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </th>
+        <th>TYPE</th>
+        <th>Book Cover Image</th>
+        <th class="sortIcon" (click)="sortObject('bookName')">Book Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of this.records">
+        <td>{{record.id}}</td>
+        <td>{{record.attributes.display_properties.type}}</td>
+        <td class="book-cover"><img src="{{record.attributes.display_properties.image}}" /></td>
+        <td>{{record.attributes.content}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
